@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>رصد تِک | اخبار و پادکست تکنولوژی</title>
+  <meta name="description" content="پادکست اخبار و تحلیل تکنولوژی با اجرای سامان — از نیمه‌هادی تا هوش مصنوعی">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background: #0f0f0f;
+      color: #e5e5e5;
+      line-height: 1.7;
+    }
+
+    .top-bar {
+      background: #1a1a1a;
+      border-bottom: 1px solid #2a2a2a;
+      padding: 8px 0;
+      font-size: 0.8rem;
+      color: #888;
+      text-align: center;
+    }
+
+    header {
+      background: #121212;
+      border-bottom: 1px solid #2a2a2a;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: #00c853;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      box-shadow: 0 0 15px rgba(0, 200, 83, 0.4);
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #00c853;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+    }
+
+    nav a {
+      color: #ccc;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: #00c853; }
+
+    .hero {
+      max-width: 1100px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, #1a1a1a 0%, #141414 100%);
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 0;
+    }
+
+    .hero-content {
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(0, 200, 83, 0.15);
+      color: #00c853;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+      width: fit-content;
+    }
+
+    .hero-content h1 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    .hero-content p {
+      color: #aaa;
+      font-size: 0.95rem;
+      margin-bottom: 24px;
+    }
+
+    .hero-audio {
+      width: 100%;
+      margin-top: 8px;
+      border-radius: 8px;
+    }
+
+    .hero-visual {
+      background: #0d0d0d;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 280px;
+      position: relative;
+    }
+
+    .hero-visual .mic {
+      font-size: 100px;
+      filter: drop-shadow(0 0 30px rgba(0, 200, 83, 0.45));
+    }
+
+    .section {
+      max-width: 1100px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      border-bottom: 2px solid #00c853;
+      padding-bottom: 10px;
+    }
+
+    .section-header h2 {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .news-card {
+      background: #161616;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .news-card:hover {
+      transform: translateY(-4px);
+      border-color: #00c853;
+    }
+
+    .news-card .img {
+      height: 140px;
+      background: #1f1f1f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+    }
+
+    .news-card .body {
+      padding: 16px;
+    }
+
+    .news-card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #eee;
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .news-card p {
+      font-size: 0.82rem;
+      color: #888;
+    }
+
+    .about-box {
+      background: #161616;
+      border: 1px solid #2a2a2a;
+      border-radius: 14px;
+      padding: 32px 28px;
+      text-align: center;
+    }
+
+    .about-box h2 {
+      color: #00c853;
+      margin-bottom: 16px;
+      font-size: 1.3rem;
+    }
+
+    .about-box p {
+      color: #bbb;
+      font-size: 1rem;
+      max-width: 620px;
+      margin: 0 auto 22px;
+    }
+
+    .links {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 11px 26px;
+      background: #00c853;
+      color: #000;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: #00e676;
+      transform: translateY(-2px);
+    }
+
+    .btn.outline {
+      background: transparent;
+      border: 2px solid #00c853;
+      color: #00c853;
+    }
+
+    .btn.outline:hover {
+      background: #00c853;
+      color: #000;
+    }
+
+    footer {
+      background: #0a0a0a;
+      border-top: 1px solid #222;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 60px;
+      color: #555;
+      font-size: 0.85rem;
+    }
+
+    footer span { color: #00c853; }
+
+    @media (max-width: 768px) {
+      .hero-card { grid-template-columns: 1fr; }
+      .news-grid { grid-template-columns: 1fr; }
+      nav { display: none; }
+      .hero-content { padding: 28px 22px; }
+      .hero-content h1 { font-size: 1.35rem; }
+      .hero-visual { min-height: 180px; }
+      .hero-visual .mic { font-size: 70px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">اخبار تکنولوژی • پادکست • تحلیل نیمه‌هادی</div>
+
+  <header>
+    <div class="header-inner">
+      <a href="/" class="logo-area">
+        <div class="logo-icon">🎙️</div>
+        <div class="logo-text">رصد تِک</div>
+      </a>
+      <nav>
+        <a href="#episode">پادکست</a>
+        <a href="#news">گزارش‌ها</a>
+        <a href="#about">درباره ما</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Episode -->
+  <section class="hero" id="episode">
+    <div class="hero-card">
+      <div class="hero-content">
+        <div class="badge">اپیزود جدید</div>
+        <h1>اپیزود ۱: هند، کوووس و گلوگاه‌های چیپ</h1>
+        <p>
+          در اولین اپیزود سراغ برنامه نیمه‌هادی هند و چالش بزرگ بسته‌بندی پیشرفته چیپ‌ها (CoWoS) رفتیم.
+          از وضعیت واقعی کارخانه‌های هندی تا کمبود ظرفیت بسته‌بندی در TSMC.
+        </p>
+        <audio class="hero-audio" controls>
+          <source src="rasadtek_episode1_cleaned.mp3" type="audio/mpeg">
+          مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
+        </audio>
+      </div>
+      <div class="hero-visual">
+        <div class="mic">🎙️</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section class="section" id="news">
+    <div class="section-header">
+      <h2>آخرین گزارش‌ها</h2>
+    </div>
+    <div class="news-grid">
+      <article class="news-card">
+        <div class="img">🇮🇳</div>
+        <div class="body">
+          <h3>برنامه نیمه‌هادی هند؛ واقعیت یا شعار؟</h3>
+          <p>چند کارخانه راه‌افتاده، اما هنوز بیشتر روی بسته‌بندی تمرکز دارند تا ساخت واقعی چیپ.</p>
+        </div>
+      </article>
+      <article class="news-card">
+        <div class="img">📦</div>
+        <div class="body">
+          <h3>کوووس (CoWoS)؛ گلوگاه جدید هوش مصنوعی</h3>
+          <p>حتی TSMC هم ظرفیت بسته‌بندی پیشرفته‌اش پر شده. انویدیا و دیگران صف کشیده‌اند.</p>
+        </div>
+      </article>
+      <article class="news-card">
+        <div class="img">🧠</div>
+        <div class="body">
+          <h3>رقابت حافظه هوش مصنوعی داغ‌تر شد</h3>
+          <p>میکرون و سامسونگ سرمایه‌گذاری‌های سنگینی برای حافظه‌های مخصوص AI شروع کرده‌اند.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="about-box">
+      <h2>درباره رصد تِک</h2>
+      <p>
+        رصد تِک پادکست اخبار و تحلیل تکنولوژی به زبان ساده و دقیق است.
+        هر هفته مهم‌ترین اتفاقات دنیای فناوری را با هم بررسی می‌کنیم؛
+        از نیمه‌هادی و هوش مصنوعی تا سخت‌افزار و امنیت دیجیتال.
+      </p>
+      <div class="links">
+        <a href="https://t.me/Sepeehr" class="btn" target="_blank" rel="noopener">تلگرام</a>
+        <a href="#episode" class="btn outline">گوش دادن به اپیزود</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    © ۱۴۰۵ <span>رصد تِک</span> — با اجرای سامان
+  </footer>
+
+</body>
+</html>
